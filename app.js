@@ -11,6 +11,7 @@ init() {
 
     this.disableTickerPastDate();
     this.addListeners();
+    this.startCountdowns();
 }
 
 disableTickerPastDate = () => {
@@ -66,6 +67,39 @@ this.removeCountdownFromHtml(countdown);
 });
 
 this.countdowns.push(countdown);
+}
+
+startCountdowns = () => {
+    this.intervalId = setInterval(this.checkCountdowns, 1000);
+}
+
+checkCountdowns = () => {
+const now = new Date().getTime();
+const second = 1000;
+const minute = second * 60;
+const hour = minute * 60;
+const day = hour * 24;
+
+this.countdowns.forEach((c) => {
+    const distance = c.timestamp - now;
+    const days = Math.floor(distance / day);
+    const hours = Math.floor((distance % day) / hour);
+    const minutes = Math.floor((distance % hour) / minute);
+    const seconds = Math.floor((distance % minute) / second);
+
+    if (distance > 0) {
+        c.updateCountdownHtml(
+            days, 
+            hours, 
+            minutes, 
+            seconds
+
+        );
+    } else {
+        c.countdownFinished();
+    }
+});
+
 }
 
 removeCountdownFromHtml = (c) => {
