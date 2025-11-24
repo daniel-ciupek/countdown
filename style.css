@@ -38,14 +38,44 @@ body {
     position: relative;
     margin-top: 5px;
     padding: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+    border-radius: 4px;
 }
 
 .countdown-title {
     margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    padding: 0 30px 0 5px; 
+    word-wrap: break-word;
+    cursor: pointer;
+}
+
+/* Skrócony tytuł - tekst jest zawijany, ale widoczne są tylko 3 linie */
+.countdown-title.truncated {
+    max-height: 3.6em; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    transition: max-height 0.3s ease-out;
+}
+
+/* Rozwinięty tytuł - widoczny jest cały tekst */
+.countdown-title.expanded {
+    max-height: 500px; 
+    overflow: visible;
+}
+
+
+.countdown-title-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #006959;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.countdown-title-toggle:hover {
+    text-decoration: underline;
 }
 
 .countdown-body {

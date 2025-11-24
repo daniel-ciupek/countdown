@@ -14,9 +14,7 @@ init() {
     this.startCountdowns();
 }
 
-
 disableTickerPastDate = () => {
-    
     let now = new Date();
     
     now.setSeconds(0); 
@@ -28,12 +26,12 @@ disableTickerPastDate = () => {
     const localISOTime = (new Date(now.getTime() - offset)).toISOString().slice(0, 16);
 
     this.datePicker.setAttribute("min", localISOTime);
-    
     this.datePicker.setAttribute("value", localISOTime);
 }
 
 addListeners = () => {
-    this.newCountdownBtn.addEventListener("click", ()=> {
+    this.newCountdownBtn.addEventListener("click", (e)=> {
+        e.preventDefault(); 
         const dateStr = this.datePicker.value;
         const eventTitle = this.eventTitle.value;
 
@@ -46,11 +44,13 @@ addListeners = () => {
         });
     });
 }
+
 addNewCountdown = ({title, date, container}) => {
 const countdownId = "countdown" + this.countdownCounter++;
 
 const code = `<div class="countdown" id="${countdownId}">
-    <h3 class="countdown-title">${title}</h3>
+    <h3 class="countdown-title truncated">${title}</h3>
+    <span class="countdown-title-toggle">...więcej</span>
     <div class="countdown-body">
         <ul class="timer">
             <li><span class="days"></span>Dni</li>

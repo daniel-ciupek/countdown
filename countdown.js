@@ -15,10 +15,30 @@ class Countdown {
 
         this.deleteBtnEl = this.container.querySelector(".countdown-delete");
 
+        this.titleEl = this.container.querySelector(".countdown-title");
+        this.titleToggleEl = this.container.querySelector(".countdown-title-toggle");
+
+        this.addTitleToggleListener(); 
     }
 
     addDeleteListener = (callback) => {
         this.deleteBtnEl.addEventListener("click", callback);
+    }
+
+    addTitleToggleListener = () => {
+        const toggleHandler = () => {
+            this.titleEl.classList.toggle("truncated");
+            this.titleEl.classList.toggle("expanded");
+            
+            if (this.titleEl.classList.contains("expanded")) {
+                this.titleToggleEl.textContent = "...mniej";
+            } else {
+                this.titleToggleEl.textContent = "...więcej";
+            }
+        };
+
+        this.titleEl.addEventListener("click", toggleHandler);
+        this.titleToggleEl.addEventListener("click", toggleHandler);
     }
 
     updateCountdownHtml = (d, h, m, s) => {
