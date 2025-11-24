@@ -7,20 +7,19 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-<div class="container">
-    <div class="countdowns-container">
+    <div class="container">
+      <div class="countdowns-container"></div>
+      <div class="input-container" id="input-container">
+        <h3>Dodaj nowe wydarzenie</h3>
+        <form action="#" class="form" id="countdown-form">
+          <label for="event-title">Tytuł wydarzenia</label>
+          <input type="text" id="event-title" />
+          <label for="date-picker">Wybierz datę:</label>
+          <input type="datetime-local" id="date-picker" />
+          <button type="submit" id="new-countdown">Dodaj</button>
+        </form>
+      </div>
     </div>
-    <div class="input-container" id="input-container">
-<h3>Dodaj nowe wydarzenie</h3>
-<form action="#" class="form" id="countdown-form">
-    <label for="event-title">Tytuł wydarzenia</label>
-    <input type="text" id="event-title">
-    <label for="date-picker">Wybierz datę:</label>
-    <input type="datetime-local" id="date-picker">
-    <button type="submit" id="new-countdown">Dodaj</button>
-</form>
-    </div>
-</div>
 
     <script src="countdown.js"></script>
     <script src="app.js"></script>
