@@ -14,17 +14,17 @@ init() {
     this.startCountdowns();
 }
 
-// app.js
 
 disableTickerPastDate = () => {
     
     let now = new Date();
     
-    now.setMinutes(now.getMinutes() + 1);
-    now.setSeconds(0);
+    now.setSeconds(0); 
+    now.setMilliseconds(0);
+    
+    now.setMinutes(now.getMinutes() + 1); 
 
     const offset = now.getTimezoneOffset() * 60000;
-    
     const localISOTime = (new Date(now.getTime() - offset)).toISOString().slice(0, 16);
 
     this.datePicker.setAttribute("min", localISOTime);
