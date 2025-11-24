@@ -103,6 +103,13 @@ this.countdowns.forEach((c) => {
 }
 
 removeCountdownFromHtml = (c) => {
+    const countdownId = c.getId();
+    const countdownContainer = c.getContainer();
+
+    this.countdownsContainer.removeChild(countdownContainer);
+
+    this.countdowns = this.countdowns.filter((c) => c.id != countdownId );
+    c.destroyCountdown();
 
 }
 
